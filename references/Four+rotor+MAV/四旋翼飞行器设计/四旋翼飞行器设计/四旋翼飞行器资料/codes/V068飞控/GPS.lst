@@ -1,0 +1,90 @@
+   1               		.file	"GPS.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.text
+  10               	.global	GPS_Neutral
+  12               	GPS_Neutral:
+  13               	/* prologue: frame size=0 */
+  14               	/* prologue end (size=0) */
+  15 0000 8091 0000 		lds r24,GpsAktuell_X
+  16 0004 9091 0000 		lds r25,(GpsAktuell_X)+1
+  17 0008 A091 0000 		lds r26,(GpsAktuell_X)+2
+  18 000c B091 0000 		lds r27,(GpsAktuell_X)+3
+  19 0010 8093 0000 		sts GpsZiel_X,r24
+  20 0014 9093 0000 		sts (GpsZiel_X)+1,r25
+  21 0018 A093 0000 		sts (GpsZiel_X)+2,r26
+  22 001c B093 0000 		sts (GpsZiel_X)+3,r27
+  23 0020 8091 0000 		lds r24,GpsAktuell_Y
+  24 0024 9091 0000 		lds r25,(GpsAktuell_Y)+1
+  25 0028 A091 0000 		lds r26,(GpsAktuell_Y)+2
+  26 002c B091 0000 		lds r27,(GpsAktuell_Y)+3
+  27 0030 8093 0000 		sts GpsZiel_Y,r24
+  28 0034 9093 0000 		sts (GpsZiel_Y)+1,r25
+  29 0038 A093 0000 		sts (GpsZiel_Y)+2,r26
+  30 003c B093 0000 		sts (GpsZiel_Y)+3,r27
+  31               	/* epilogue: frame size=0 */
+  32 0040 0895      		ret
+  33               	/* epilogue end (size=1) */
+  34               	/* function GPS_Neutral size 33 (32) */
+  36               	.global	GPS_BerechneZielrichtung
+  38               	GPS_BerechneZielrichtung:
+  39               	/* prologue: frame size=0 */
+  40               	/* prologue end (size=0) */
+  41 0042 1092 0000 		sts (GPS_Nick)+1,__zero_reg__
+  42 0046 1092 0000 		sts GPS_Nick,__zero_reg__
+  43 004a 1092 0000 		sts (GPS_Roll)+1,__zero_reg__
+  44 004e 1092 0000 		sts GPS_Roll,__zero_reg__
+  45               	/* epilogue: frame size=0 */
+  46 0052 0895      		ret
+  47               	/* epilogue end (size=1) */
+  48               	/* function GPS_BerechneZielrichtung size 9 (8) */
+  50               	.global	GPS_Nick
+  51               	.global	GPS_Nick
+  52               		.section .bss
+  55               	GPS_Nick:
+  56 0000 0000      		.skip 2,0
+  57               	.global	GPS_Roll
+  58               	.global	GPS_Roll
+  61               	GPS_Roll:
+  62 0002 0000      		.skip 2,0
+  63               	.global	GpsAktuell_X
+  64               	.global	GpsAktuell_X
+  67               	GpsAktuell_X:
+  68 0004 0000 0000 		.skip 4,0
+  69               	.global	GpsAktuell_Y
+  70               	.global	GpsAktuell_Y
+  73               	GpsAktuell_Y:
+  74 0008 0000 0000 		.skip 4,0
+  75               	.global	GpsZiel_X
+  76               	.global	GpsZiel_X
+  79               	GpsZiel_X:
+  80 000c 0000 0000 		.skip 4,0
+  81               	.global	GpsZiel_Y
+  82               	.global	GpsZiel_Y
+  85               	GpsZiel_Y:
+  86 0010 0000 0000 		.skip 4,0
+  87               	/* File "GPS.c": code   42 = 0x002a (  40), prologues   0, epilogues   2 */
+DEFINED SYMBOLS
+                            *ABS*:00000000 GPS.c
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:5      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:6      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:12     .text:00000000 GPS_Neutral
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:67     .bss:00000004 GpsAktuell_X
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:79     .bss:0000000c GpsZiel_X
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:73     .bss:00000008 GpsAktuell_Y
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:85     .bss:00000010 GpsZiel_Y
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:38     .text:00000042 GPS_BerechneZielrichtung
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:55     .bss:00000000 GPS_Nick
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccsel3xb.s:61     .bss:00000002 GPS_Roll
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss

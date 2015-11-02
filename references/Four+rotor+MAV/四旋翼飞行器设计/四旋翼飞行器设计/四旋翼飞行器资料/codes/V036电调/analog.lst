@@ -1,0 +1,207 @@
+   1               		.file	"analog.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+  16               	.Ltext0:
+  17               	.global	ADC_Init
+  19               	ADC_Init:
+  20               	.LFB9:
+  21               	.LM1:
+  22               	/* prologue: frame size=0 */
+  23               	/* prologue end (size=0) */
+  24               	.LM2:
+  25 0000 86EA      		ldi r24,lo8(-90)
+  26 0002 86B9      		out 38-0x20,r24
+  27               	.LM3:
+  28 0004 87E0      		ldi r24,lo8(7)
+  29 0006 87B9      		out 39-0x20,r24
+  30               	.LM4:
+  31 0008 369A      		sbi 38-0x20,6
+  32               	/* epilogue: frame size=0 */
+  33 000a 0895      		ret
+  34               	/* epilogue end (size=1) */
+  35               	/* function ADC_Init size 6 (5) */
+  36               	.LFE9:
+  38               	.global	AdConvert
+  40               	AdConvert:
+  41               	.LFB10:
+  42               	.LM5:
+  43               	/* prologue: frame size=0 */
+  44               	/* prologue end (size=0) */
+  45               	.LM6:
+  46 000c 27B1      		in r18,39-0x20
+  47               	.LVL0:
+  48               	.LM7:
+  49 000e 96E0      		ldi r25,lo8(6)
+  50 0010 97B9      		out 39-0x20,r25
+  51               	.LM8:
+  52 0012 10BE      		out 80-0x20,__zero_reg__
+  53               	.LM9:
+  54 0014 83ED      		ldi r24,lo8(-45)
+  55 0016 86B9      		out 38-0x20,r24
+  56               	.LM10:
+  57 0018 349A      		sbi 38-0x20,4
+  58               	.LM11:
+  59 001a 97B9      		out 39-0x20,r25
+  60               	.LM12:
+  61 001c 369A      		sbi 38-0x20,6
+  62               	.L4:
+  63               	.LM13:
+  64 001e 349B      		sbis 38-0x20,4
+  65 0020 00C0      		rjmp .L4
+  66               	.LM14:
+  67 0022 27B9      		out 39-0x20,r18
+  68               	.LM15:
+  69 0024 84B1      		in r24,36-0x20
+  70 0026 95B1      		in r25,(36)+1-0x20
+  71               	.LM16:
+  72 0028 2091 0000 		lds r18,Strom
+  73 002c 3091 0000 		lds r19,(Strom)+1
+  74               	.LVL1:
+  75 0030 A901      		movw r20,r18
+  76 0032 63E0      		ldi r22,3
+  77 0034 440F      	1:	lsl r20
+  78 0036 551F      		rol r21
+  79 0038 6A95      		dec r22
+  80 003a 01F4      		brne 1b
+  81 003c 421B      		sub r20,r18
+  82 003e 530B      		sbc r21,r19
+  83 0040 880F      		lsl r24
+  84 0042 991F      		rol r25
+  85 0044 880F      		lsl r24
+  86 0046 991F      		rol r25
+  87 0048 480F      		add r20,r24
+  88 004a 591F      		adc r21,r25
+  89 004c 83E0      		ldi r24,3
+  90 004e 5695      	1:	lsr r21
+  91 0050 4795      		ror r20
+  92 0052 8A95      		dec r24
+  93 0054 01F4      		brne 1b
+  94 0056 5093 0000 		sts (Strom)+1,r21
+  95 005a 4093 0000 		sts Strom,r20
+  96               	.LM17:
+  97 005e 8091 0000 		lds r24,Strom_max
+  98 0062 90E0      		ldi r25,lo8(0)
+  99 0064 8417      		cp r24,r20
+ 100 0066 9507      		cpc r25,r21
+ 101 0068 00F4      		brsh .L6
+ 102 006a 4093 0000 		sts Strom_max,r20
+ 103               	.L6:
+ 104               	.LM18:
+ 105 006e 16B8      		out 38-0x20,__zero_reg__
+ 106               	.LM19:
+ 107 0070 88E0      		ldi r24,lo8(8)
+ 108 0072 80BF      		out 80-0x20,r24
+ 109               	/* epilogue: frame size=0 */
+ 110 0074 0895      		ret
+ 111               	/* epilogue end (size=1) */
+ 112               	/* function AdConvert size 53 (52) */
+ 113               	.LFE10:
+ 115               	.global	MessAD
+ 117               	MessAD:
+ 118               	.LFB11:
+ 119               	.LM20:
+ 120               	/* prologue: frame size=0 */
+ 121               	/* prologue end (size=0) */
+ 122               	.LVL2:
+ 123               	.LM21:
+ 124 0076 27B1      		in r18,39-0x20
+ 125               	.LVL3:
+ 126               	.LM22:
+ 127 0078 87B9      		out 39-0x20,r24
+ 128               	.LM23:
+ 129 007a 10BE      		out 80-0x20,__zero_reg__
+ 130               	.LM24:
+ 131 007c 93ED      		ldi r25,lo8(-45)
+ 132 007e 96B9      		out 38-0x20,r25
+ 133               	.LM25:
+ 134 0080 349A      		sbi 38-0x20,4
+ 135               	.LM26:
+ 136 0082 87B9      		out 39-0x20,r24
+ 137               	.LM27:
+ 138 0084 369A      		sbi 38-0x20,6
+ 139               	.L12:
+ 140               	.LM28:
+ 141 0086 349B      		sbis 38-0x20,4
+ 142 0088 00C0      		rjmp .L12
+ 143               	.LM29:
+ 144 008a 27B9      		out 39-0x20,r18
+ 145               	.LM30:
+ 146 008c 16B8      		out 38-0x20,__zero_reg__
+ 147               	.LM31:
+ 148 008e 88E0      		ldi r24,lo8(8)
+ 149               	.LVL4:
+ 150 0090 80BF      		out 80-0x20,r24
+ 151               	.LM32:
+ 152 0092 84B1      		in r24,36-0x20
+ 153 0094 95B1      		in r25,(36)+1-0x20
+ 154               	/* epilogue: frame size=0 */
+ 155 0096 0895      		ret
+ 156               	/* epilogue end (size=1) */
+ 157               	/* function MessAD size 17 (16) */
+ 158               	.LFE11:
+ 160               	.global	FastADConvert
+ 162               	FastADConvert:
+ 163               	.LFB12:
+ 164               	.LM33:
+ 165               	/* prologue: frame size=0 */
+ 166               	/* prologue end (size=0) */
+ 167               	.LM34:
+ 168 0098 86E0      		ldi r24,lo8(6)
+ 169 009a 00D0      		rcall MessAD
+ 170 009c 9C01      		movw r18,r24
+ 171               	.LVL5:
+ 172 009e 220F      		lsl r18
+ 173 00a0 331F      		rol r19
+ 174 00a2 220F      		lsl r18
+ 175 00a4 331F      		rol r19
+ 176 00a6 293C      		cpi r18,201
+ 177 00a8 3105      		cpc r19,__zero_reg__
+ 178 00aa 00F0      		brlo .L18
+ 179               	.LM35:
+ 180 00ac 28EC      		ldi r18,lo8(200)
+ 181 00ae 30E0      		ldi r19,hi8(200)
+ 182               	.L18:
+ 183               	.LM36:
+ 184 00b0 3093 0000 		sts (Strom)+1,r19
+ 185 00b4 2093 0000 		sts Strom,r18
+ 186               	.LM37:
+ 187 00b8 8091 0000 		lds r24,Strom_max
+ 188 00bc 90E0      		ldi r25,lo8(0)
+ 189 00be 8217      		cp r24,r18
+ 190 00c0 9307      		cpc r25,r19
+ 191 00c2 00F4      		brsh .L19
+ 192 00c4 2093 0000 		sts Strom_max,r18
+ 193               	.L19:
+ 194               	.LM38:
+ 195 00c8 16B8      		out 38-0x20,__zero_reg__
+ 196               	.LM39:
+ 197 00ca 88E0      		ldi r24,lo8(8)
+ 198 00cc 80BF      		out 80-0x20,r24
+ 199               	/* epilogue: frame size=0 */
+ 200 00ce 0895      		ret
+ 201               	/* epilogue end (size=1) */
+ 202               	/* function FastADConvert size 28 (27) */
+ 203               	.LFE12:
+ 253               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 analog.c
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/cciZVdxv.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/cciZVdxv.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/cciZVdxv.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/cciZVdxv.s:5      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/cciZVdxv.s:6      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/cciZVdxv.s:19     .text:00000000 ADC_Init
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/cciZVdxv.s:40     .text:0000000c AdConvert
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/cciZVdxv.s:117    .text:00000076 MessAD
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/cciZVdxv.s:162    .text:00000098 FastADConvert
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+Strom
+Strom_max

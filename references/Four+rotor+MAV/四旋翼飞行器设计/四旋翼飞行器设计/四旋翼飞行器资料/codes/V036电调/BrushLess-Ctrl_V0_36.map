@@ -1,0 +1,820 @@
+Archive member included because of file (symbol)
+
+d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodqi4.o)
+                              main.o (__udivmodqi4)
+d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodhi4.o)
+                              main.o (__udivmodhi4)
+d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodsi4.o)
+                              main.o (__udivmodsi4)
+d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_exit.o)
+                              d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o (exit)
+d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_copy_data.o)
+                              main.o (__do_copy_data)
+d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_clear_bss.o)
+                              main.o (__do_clear_bss)
+d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o)
+                              uart.o (fdevopen)
+d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(iob.o)
+                              d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o) (__iob)
+d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(calloc.o)
+                              d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o) (calloc)
+d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+                              d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(calloc.o) (malloc)
+d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(memset.o)
+                              d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(calloc.o) (memset)
+d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_epilogue.o)
+                              d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o) (__epilogue_restores__)
+
+Allocating common symbols
+Common symbol       size              file
+
+MeineSlaveAdresse   0x1               uart.o
+SendeBuffer         0x64              uart.o
+DrehZahlTabelle     0x200             main.o
+Timer0Overflow      0x1               timer0.o
+Debug_Timer         0x2               uart.o
+__brkval            0x2               d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+RxdBuffer           0x64              uart.o
+RuheStrom           0x2               main.o
+DebugOut            0x22              uart.o
+I2C_RXBuffer        0x1               twislave.o
+__flp               0x2               d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+__iob               0x6               d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(iob.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00002000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+LOAD main.o
+LOAD uart.o
+LOAD timer0.o
+LOAD analog.o
+LOAD PPM_Decode.o
+LOAD twislave.o
+LOAD BLMC.o
+LOAD d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libm.a
+LOAD d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a
+LOAD d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a
+LOAD d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x1b36
+ *(.vectors)
+ .vectors       0x00000000       0x26 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+                0x00000000                __vectors
+                0x00000000                __vector_default
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000026                . = ALIGN (0x2)
+                0x00000026                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000026        0x0 linker stubs
+ *(.trampolines*)
+                0x00000026                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000026                __ctors_start = .
+ *(.ctors)
+                0x00000026                __ctors_end = .
+                0x00000026                __dtors_start = .
+ *(.dtors)
+                0x00000026                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000026        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+                0x00000026                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000026        0xc d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x00000032       0x16 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_copy_data.o)
+                0x00000032                __do_copy_data
+ .init4         0x00000048       0x10 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_clear_bss.o)
+                0x00000048                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x00000058        0x4 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+ *(.init9)
+ *(.text)
+ .text          0x0000005c        0x2 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+                0x0000005c                __vector_12
+                0x0000005c                __bad_interrupt
+                0x0000005c                __vector_6
+                0x0000005c                __vector_3
+                0x0000005c                __vector_7
+                0x0000005c                __vector_2
+                0x0000005c                __vector_15
+                0x0000005c                __vector_14
+                0x0000005c                __vector_10
+                0x0000005c                __vector_18
+ .text          0x0000005e      0xa86 main.o
+                0x000000d0                SollwertErmittlung
+                0x00000234                DelayM
+                0x00000726                Anwerfen
+                0x000000a4                PWM_Init
+                0x0000020e                RotBlink
+                0x0000027e                MotorTon
+                0x000000ba                Wait
+                0x00000810                main
+                0x000000ca                Delay
+                0x0000005e                SetPWM
+                0x000001ce                DebugAusgaben
+ .text          0x00000ae4      0x4b4 uart.o
+                0x00000efc                WriteProgramData
+                0x00000f32                UART_Init
+                0x00000d3c                __vector_11
+                0x00000ae4                __vector_13
+                0x00000af8                SendUart
+                0x00000bf6                AddCRC
+                0x00000efe                DatenUebertragung
+                0x00000b46                Decode64
+                0x00000c52                SendOutData
+                0x00000d22                uart_putchar
+ .text          0x00000f98       0xfa timer0.o
+                0x0000103a                SetDelay
+                0x0000104c                CheckDelay
+                0x00001062                Delay_ms
+                0x00000f98                __vector_9
+                0x00001028                Timer0_Init
+ .text          0x00001092       0xd0 analog.o
+                0x00001108                MessAD
+                0x0000112a                FastADConvert
+                0x0000109e                AdConvert
+                0x00001092                ADC_Init
+ .text          0x00001162      0x18c PPM_Decode.o
+                0x000012d0                __vector_1
+                0x0000119e                __vector_5
+                0x00001162                InitPPM
+                0x0000117c                __vector_8
+ .text          0x000012ee       0xb2 twislave.o
+                0x000012fe                __vector_17
+                0x000012ee                InitIC2_Slave
+ .text          0x000013a0      0x404 BLMC.o
+                0x000013b4                Manuell
+                0x000013a0                __vector_4
+                0x000014dc                __vector_16
+ .text          0x000017a4        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodqi4.o)
+ .text          0x000017a4        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodhi4.o)
+ .text          0x000017a4        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodsi4.o)
+ .text          0x000017a4        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_exit.o)
+ .text          0x000017a4        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_copy_data.o)
+ .text          0x000017a4        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_clear_bss.o)
+ .text          0x000017a4       0x98 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o)
+                0x000017a4                fdevopen
+ .text          0x0000183c        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(iob.o)
+ .text          0x0000183c       0x34 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(calloc.o)
+                0x0000183c                calloc
+ .text          0x00001870      0x1fc d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+                0x00001870                malloc
+                0x000019c0                free
+ .text          0x00001a6c        0xe d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(memset.o)
+                0x00001a6c                memset
+ .text          0x00001a7a        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_epilogue.o)
+                0x00001a7a                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x00001a7a       0x18 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodqi4.o)
+                0x00001a7a                __udivmodqi4
+ .text.libgcc   0x00001a92       0x28 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodhi4.o)
+                0x00001a92                __udivmodhi4
+ .text.libgcc   0x00001aba       0x44 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodsi4.o)
+                0x00001aba                __udivmodsi4
+ .text.libgcc   0x00001afe        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_exit.o)
+ .text.libgcc   0x00001afe        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00001afe        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00001afe       0x36 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_epilogue.o)
+                0x00001afe                __epilogue_restores__
+                0x00001b34                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00001b34        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_exit.o)
+                0x00001b34                exit
+                0x00001b34                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00001b34        0x2 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_exit.o)
+ *(.fini0)
+                0x00001b36                _etext = .
+
+.data           0x00800060       0x16 load address 0x00001b36
+                0x00800060                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800060        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+ .data          0x00800060        0xd main.o
+                0x00800062                ZeitFuerBerechnungen
+                0x00800066                MotorAdresse
+                0x00800064                MaxPWM
+                0x00800060                KommutierDelay
+                0x00800065                ZeitZumAdWandeln
+                0x00800067                PPM_Betrieb
+                0x00800063                MotorGestoppt
+ .data          0x0080006d        0x1 uart.o
+                0x0080006d                UebertragungAbgeschlossen
+ .data          0x0080006e        0x0 timer0.o
+ .data          0x0080006e        0x0 analog.o
+ .data          0x0080006e        0x0 PPM_Decode.o
+ .data          0x0080006e        0x0 twislave.o
+ .data          0x0080006e        0x1 BLMC.o
+                0x0080006e                CompFreigabeTimer
+ .data          0x0080006f        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodqi4.o)
+ .data          0x0080006f        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodhi4.o)
+ .data          0x0080006f        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodsi4.o)
+ .data          0x0080006f        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_exit.o)
+ .data          0x0080006f        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_copy_data.o)
+ .data          0x0080006f        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_clear_bss.o)
+ .data          0x0080006f        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o)
+ .data          0x0080006f        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(iob.o)
+ .data          0x0080006f        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(calloc.o)
+ .data          0x0080006f        0x6 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+                0x00800071                __malloc_heap_start
+                0x00800073                __malloc_heap_end
+                0x0080006f                __malloc_margin
+ .data          0x00800075        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(memset.o)
+ .data          0x00800075        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_epilogue.o)
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800076                . = ALIGN (0x2)
+ *fill*         0x00800075        0x1 00
+                0x00800076                _edata = .
+                0x00800076                PROVIDE (__data_end, .)
+
+.bss            0x00800076      0x332 load address 0x00001b4c
+                0x00800076                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800076        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+ .bss           0x00800076       0x17 main.o
+                0x00800084                IstDrehzahl
+                0x0080007e                I2C_Timeout
+                0x0080007a                Strom_max
+                0x00800078                Strom
+                0x00800086                MotorAnwerfen
+                0x00800082                SollDrehzahl
+                0x0080007c                Drehzahl
+                0x00800080                SIO_Timeout
+                0x00800076                PWM
+                0x0080007b                Mittelstrom
+                0x00800087                CntKommutierungen
+                0x00800089                SIO_Drehzahl
+ .bss           0x0080008d       0x10 uart.o
+                0x0080008e                SioTmp
+                0x0080008d                SIO_Sollwert
+                0x00800090                MotorTest
+                0x0080008f                NeuerDatensatzEmpfangen
+                0x00800094                AnzahlEmpfangsBytes
+ .bss           0x0080009d        0x3 timer0.o
+                0x0080009d                CountMilliseconds
+ .bss           0x008000a0        0x0 analog.o
+ .bss           0x008000a0        0x9 PPM_Decode.o
+                0x008000a2                Timer1Overflow
+                0x008000a4                anz_ppm_werte
+                0x008000a3                PPM_Timeout
+                0x008000a0                PPM_Signal
+ .bss           0x008000a9        0x1 twislave.o
+                0x008000a9                Byte_Counter
+ .bss           0x008000aa        0x3 BLMC.o
+                0x008000ac                CompInterruptFreigabe
+                0x008000ab                ShadowTCCR1A
+                0x008000aa                Phase
+ .bss           0x008000ad        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodqi4.o)
+ .bss           0x008000ad        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodhi4.o)
+ .bss           0x008000ad        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodsi4.o)
+ .bss           0x008000ad        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_exit.o)
+ .bss           0x008000ad        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_copy_data.o)
+ .bss           0x008000ad        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_clear_bss.o)
+ .bss           0x008000ad        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o)
+ .bss           0x008000ad        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(iob.o)
+ .bss           0x008000ad        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(calloc.o)
+ .bss           0x008000ad        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+ .bss           0x008000ad        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(memset.o)
+ .bss           0x008000ad        0x0 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_epilogue.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x008000ad      0x202 main.o
+                0x008000ad                DrehZahlTabelle
+                0x008002ad                RuheStrom
+ COMMON         0x008002af       0xed uart.o
+                0x008002af                MeineSlaveAdresse
+                0x008002b0                SendeBuffer
+                0x00800314                Debug_Timer
+                0x00800316                RxdBuffer
+                0x0080037a                DebugOut
+ COMMON         0x0080039c        0x1 timer0.o
+                0x0080039c                Timer0Overflow
+ COMMON         0x0080039d        0x1 twislave.o
+                0x0080039d                I2C_RXBuffer
+ COMMON         0x0080039e        0x6 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(iob.o)
+                0x0080039e                __iob
+ COMMON         0x008003a4        0x4 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+                0x008003a4                __brkval
+                0x008003a6                __flp
+                0x008003a8                PROVIDE (__bss_end, .)
+                0x00001b36                __data_load_start = LOADADDR (.data)
+                0x00001b4c                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x008003a8        0x0
+                0x008003a8                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x008003a8                PROVIDE (__noinit_end, .)
+                0x008003a8                _end = .
+                0x008003a8                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab           0x00000000      0x378
+ *(.stab)
+ .stab          0x00000000      0x378 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+
+.stabstr        0x00000000       0x5f
+ *(.stabstr)
+ .stabstr       0x00000000       0x5f d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0xe0
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 main.o
+ .debug_aranges
+                0x00000020       0x20 uart.o
+ .debug_aranges
+                0x00000040       0x20 timer0.o
+ .debug_aranges
+                0x00000060       0x20 analog.o
+ .debug_aranges
+                0x00000080       0x20 PPM_Decode.o
+ .debug_aranges
+                0x000000a0       0x20 twislave.o
+ .debug_aranges
+                0x000000c0       0x20 BLMC.o
+
+.debug_pubnames
+                0x00000000      0x5b1
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000      0x1f9 main.o
+ .debug_pubnames
+                0x000001f9      0x17e uart.o
+ .debug_pubnames
+                0x00000377       0x83 timer0.o
+ .debug_pubnames
+                0x000003fa       0x4a analog.o
+ .debug_pubnames
+                0x00000444       0x8f PPM_Decode.o
+ .debug_pubnames
+                0x000004d3       0x56 twislave.o
+ .debug_pubnames
+                0x00000529       0x88 BLMC.o
+
+.debug_info     0x00000000     0x114c
+ *(.debug_info)
+ .debug_info    0x00000000      0x5ba main.o
+ .debug_info    0x000005ba      0x4c6 uart.o
+ .debug_info    0x00000a80      0x216 timer0.o
+ .debug_info    0x00000c96      0x140 analog.o
+ .debug_info    0x00000dd6      0x141 PPM_Decode.o
+ .debug_info    0x00000f17      0x10a twislave.o
+ .debug_info    0x00001021      0x12b BLMC.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x747
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x1dc main.o
+ .debug_abbrev  0x000001dc      0x181 uart.o
+ .debug_abbrev  0x0000035d      0x133 timer0.o
+ .debug_abbrev  0x00000490       0xdf analog.o
+ .debug_abbrev  0x0000056f       0xa6 PPM_Decode.o
+ .debug_abbrev  0x00000615       0x9d twislave.o
+ .debug_abbrev  0x000006b2       0x95 BLMC.o
+
+.debug_line     0x00000000     0x1538
+ *(.debug_line)
+ .debug_line    0x00000000      0x9ae main.o
+ .debug_line    0x000009ae      0x38e uart.o
+ .debug_line    0x00000d3c      0x11f timer0.o
+ .debug_line    0x00000e5b      0x18f analog.o
+ .debug_line    0x00000fea      0x123 PPM_Decode.o
+ .debug_line    0x0000110d      0x123 twislave.o
+ .debug_line    0x00001230      0x308 BLMC.o
+
+.debug_frame    0x00000000      0x2e0
+ *(.debug_frame)
+ .debug_frame   0x00000000       0xc0 main.o
+ .debug_frame   0x000000c0       0xb0 uart.o
+ .debug_frame   0x00000170       0x60 timer0.o
+ .debug_frame   0x000001d0       0x50 analog.o
+ .debug_frame   0x00000220       0x50 PPM_Decode.o
+ .debug_frame   0x00000270       0x30 twislave.o
+ .debug_frame   0x000002a0       0x40 BLMC.o
+
+.debug_str      0x00000000      0x5fc
+ *(.debug_str)
+ .debug_str     0x00000000      0x320 main.o
+                                0x38c (size before relaxing)
+ .debug_str     0x00000320      0x13d uart.o
+                                0x28c (size before relaxing)
+ .debug_str     0x0000045d       0x94 timer0.o
+                                0x190 (size before relaxing)
+ .debug_str     0x000004f1       0x3f analog.o
+                                0x119 (size before relaxing)
+ .debug_str     0x00000530       0x4d PPM_Decode.o
+                                0x14d (size before relaxing)
+ .debug_str     0x0000057d       0x3a twislave.o
+                                0x13d (size before relaxing)
+ .debug_str     0x000005b7       0x45 BLMC.o
+                                0x160 (size before relaxing)
+
+.debug_loc      0x00000000      0x44f
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x172 main.o
+ .debug_loc     0x00000172      0x24c uart.o
+ .debug_loc     0x000003be       0x58 timer0.o
+ .debug_loc     0x00000416       0x26 analog.o
+ .debug_loc     0x0000043c       0x13 twislave.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(BrushLess-Ctrl_V0_36.elf elf32-avr)
+LOAD linker stubs
+
+Cross Reference Table
+
+Symbol                                            File
+ADC_Init                                          analog.o
+AdConvert                                         analog.o
+                                                  BLMC.o
+                                                  main.o
+AddCRC                                            uart.o
+Anwerfen                                          main.o
+AnzahlEmpfangsBytes                               uart.o
+Byte_Counter                                      twislave.o
+CheckDelay                                        timer0.o
+                                                  uart.o
+                                                  main.o
+CntKommutierungen                                 main.o
+                                                  BLMC.o
+CompFreigabeTimer                                 BLMC.o
+CompInterruptFreigabe                             BLMC.o
+                                                  main.o
+CountMilliseconds                                 timer0.o
+DatenUebertragung                                 uart.o
+                                                  main.o
+DebugAusgaben                                     main.o
+DebugOut                                          uart.o
+                                                  main.o
+Debug_Timer                                       uart.o
+Decode64                                          uart.o
+Delay                                             main.o
+DelayM                                            main.o
+Delay_ms                                          timer0.o
+                                                  main.o
+DrehZahlTabelle                                   main.o
+Drehzahl                                          main.o
+FastADConvert                                     analog.o
+                                                  main.o
+I2C_RXBuffer                                      twislave.o
+                                                  main.o
+I2C_Timeout                                       main.o
+                                                  twislave.o
+                                                  timer0.o
+InitIC2_Slave                                     twislave.o
+                                                  main.o
+InitPPM                                           PPM_Decode.o
+                                                  main.o
+IstDrehzahl                                       main.o
+KommutierDelay                                    main.o
+Manuell                                           BLMC.o
+                                                  main.o
+MaxPWM                                            main.o
+                                                  twislave.o
+MeineSlaveAdresse                                 uart.o
+MessAD                                            analog.o
+                                                  main.o
+Mittelstrom                                       main.o
+                                                  twislave.o
+MotorAdresse                                      main.o
+                                                  twislave.o
+                                                  uart.o
+MotorAnwerfen                                     main.o
+MotorGestoppt                                     main.o
+MotorTest                                         uart.o
+MotorTon                                          main.o
+NeuerDatensatzEmpfangen                           uart.o
+PPM_Betrieb                                       main.o
+                                                  BLMC.o
+PPM_Signal                                        PPM_Decode.o
+                                                  main.o
+PPM_Timeout                                       PPM_Decode.o
+                                                  timer0.o
+                                                  main.o
+PWM                                               main.o
+PWM_Init                                          main.o
+Phase                                             BLMC.o
+                                                  main.o
+RotBlink                                          main.o
+RuheStrom                                         main.o
+RxdBuffer                                         uart.o
+SIO_Drehzahl                                      main.o
+SIO_Sollwert                                      uart.o
+                                                  main.o
+SIO_Timeout                                       main.o
+                                                  timer0.o
+                                                  uart.o
+SendOutData                                       uart.o
+SendUart                                          uart.o
+                                                  main.o
+SendeBuffer                                       uart.o
+SetDelay                                          timer0.o
+                                                  uart.o
+                                                  main.o
+SetPWM                                            main.o
+ShadowTCCR1A                                      BLMC.o
+SioTmp                                            uart.o
+SollDrehzahl                                      main.o
+SollwertErmittlung                                main.o
+Strom                                             main.o
+                                                  analog.o
+Strom_max                                         main.o
+                                                  analog.o
+Timer0Overflow                                    timer0.o
+Timer0_Init                                       timer0.o
+                                                  main.o
+Timer1Overflow                                    PPM_Decode.o
+UART_Init                                         uart.o
+                                                  main.o
+UebertragungAbgeschlossen                         uart.o
+                                                  main.o
+Wait                                              main.o
+WriteProgramData                                  uart.o
+ZeitFuerBerechnungen                              main.o
+ZeitZumAdWandeln                                  main.o
+                                                  BLMC.o
+                                                  PPM_Decode.o
+__bad_interrupt                                   d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__brkval                                          d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+__bss_end                                         d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_clear_bss.o)
+__bss_start                                       d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_clear_bss.o)
+__data_end                                        d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_copy_data.o)
+__data_load_start                                 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_copy_data.o)
+__data_start                                      d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_copy_data.o)
+__do_clear_bss                                    d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_clear_bss.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(calloc.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(iob.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o)
+                                                  BLMC.o
+                                                  twislave.o
+                                                  PPM_Decode.o
+                                                  analog.o
+                                                  timer0.o
+                                                  uart.o
+                                                  main.o
+__do_copy_data                                    d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_copy_data.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(calloc.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(iob.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o)
+                                                  BLMC.o
+                                                  twislave.o
+                                                  PPM_Decode.o
+                                                  analog.o
+                                                  timer0.o
+                                                  uart.o
+                                                  main.o
+__epilogue_restores__                             d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_epilogue.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o)
+__flp                                             d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+__heap_end                                        d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+__heap_start                                      d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+__init                                            d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__iob                                             d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(iob.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o)
+__malloc_heap_end                                 d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+__malloc_heap_start                               d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+__malloc_margin                                   d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+__stack                                           d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__udivmodhi4                                      d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodhi4.o)
+                                                  main.o
+__udivmodqi4                                      d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodqi4.o)
+                                                  main.o
+__udivmodsi4                                      d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_udivmodsi4.o)
+                                                  main.o
+__vector_1                                        PPM_Decode.o
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_10                                       d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_11                                       uart.o
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_12                                       d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_13                                       uart.o
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_14                                       d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_15                                       d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_16                                       BLMC.o
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_17                                       twislave.o
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_18                                       d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_2                                        d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_3                                        d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_4                                        BLMC.o
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_5                                        PPM_Decode.o
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_6                                        d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_7                                        d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_8                                        PPM_Decode.o
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_9                                        timer0.o
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vector_default                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+__vectors                                         d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+_exit                                             d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_exit.o)
+anz_ppm_werte                                     PPM_Decode.o
+                                                  timer0.o
+                                                  main.o
+calloc                                            d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(calloc.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o)
+exit                                              d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/avr4\libgcc.a(_exit.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+fdevopen                                          d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(fdevopen.o)
+                                                  uart.o
+free                                              d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+main                                              main.o
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4/crtm8.o
+malloc                                            d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(malloc.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(calloc.o)
+memset                                            d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(memset.o)
+                                                  d:/program files/gcc-4.4.3/bin/../lib/gcc/avr/4.2.2/../../../../avr/lib/avr4\libc.a(calloc.o)
+uart_putchar                                      uart.o
+                                                  main.o

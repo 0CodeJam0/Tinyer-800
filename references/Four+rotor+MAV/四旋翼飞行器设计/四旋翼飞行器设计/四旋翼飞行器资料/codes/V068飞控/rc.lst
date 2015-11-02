@@ -1,0 +1,281 @@
+   1               		.file	"rc.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.text
+  10               	.global	rc_sum_init
+  12               	rc_sum_init:
+  13               	/* prologue: frame size=0 */
+  14               	/* prologue end (size=0) */
+  15 0000 83EC      		ldi r24,lo8(-61)
+  16 0002 8093 8100 		sts 129,r24
+  17 0006 EFE6      		ldi r30,lo8(111)
+  18 0008 F0E0      		ldi r31,hi8(111)
+  19 000a 8081      		ld r24,Z
+  20 000c 8062      		ori r24,lo8(32)
+  21 000e 8083      		st Z,r24
+  22 0010 1092 0000 		sts (AdNeutralGier)+1,__zero_reg__
+  23 0014 1092 0000 		sts AdNeutralGier,__zero_reg__
+  24 0018 1092 0000 		sts (AdNeutralRoll)+1,__zero_reg__
+  25 001c 1092 0000 		sts AdNeutralRoll,__zero_reg__
+  26 0020 1092 0000 		sts (AdNeutralNick)+1,__zero_reg__
+  27 0024 1092 0000 		sts AdNeutralNick,__zero_reg__
+  28               	/* epilogue: frame size=0 */
+  29 0028 0895      		ret
+  30               	/* epilogue end (size=1) */
+  31               	/* function rc_sum_init size 21 (20) */
+  33               	.global	__vector_12
+  35               	__vector_12:
+  36               	/* prologue: frame size=0 */
+  37 002a 1F92      		push __zero_reg__
+  38 002c 0F92      		push __tmp_reg__
+  39 002e 0FB6      		in __tmp_reg__,__SREG__
+  40 0030 0F92      		push __tmp_reg__
+  41 0032 1124      		clr __zero_reg__
+  42 0034 0F93      		push r16
+  43 0036 1F93      		push r17
+  44 0038 2F93      		push r18
+  45 003a 3F93      		push r19
+  46 003c 4F93      		push r20
+  47 003e 5F93      		push r21
+  48 0040 6F93      		push r22
+  49 0042 7F93      		push r23
+  50 0044 8F93      		push r24
+  51 0046 9F93      		push r25
+  52 0048 AF93      		push r26
+  53 004a BF93      		push r27
+  54 004c CF93      		push r28
+  55 004e DF93      		push r29
+  56 0050 EF93      		push r30
+  57 0052 FF93      		push r31
+  58               	/* prologue end (size=21) */
+  59 0054 2091 8600 		lds r18,134
+  60 0058 3091 8700 		lds r19,(134)+1
+  61 005c 8091 0000 		lds r24,AltICR.2238
+  62 0060 9091 0000 		lds r25,(AltICR.2238)+1
+  63 0064 281B      		sub r18,r24
+  64 0066 390B      		sbc r19,r25
+  65 0068 8091 8600 		lds r24,134
+  66 006c 9091 8700 		lds r25,(134)+1
+  67 0070 9093 0000 		sts (AltICR.2238)+1,r25
+  68 0074 8093 0000 		sts AltICR.2238,r24
+  69 0078 C901      		movw r24,r18
+  70 007a 8D54      		subi r24,lo8(-(-1101))
+  71 007c 9440      		sbci r25,hi8(-(-1101))
+  72 007e 0091 0000 		lds r16,index.2241
+  73 0082 1091 0000 		lds r17,(index.2241)+1
+  74 0086 835F      		subi r24,lo8(6899)
+  75 0088 9A41      		sbci r25,hi8(6899)
+  76 008a 00F4      		brsh .L4
+  77 008c 0430      		cpi r16,4
+  78 008e 1105      		cpc r17,__zero_reg__
+  79 0090 04F0      		brlt .L6
+  80 0092 1092 0000 		sts NewPpmData,__zero_reg__
+  81               	.L6:
+  82 0096 81E0      		ldi r24,lo8(1)
+  83 0098 90E0      		ldi r25,hi8(1)
+  84 009a 9093 0000 		sts (index.2241)+1,r25
+  85 009e 8093 0000 		sts index.2241,r24
+  86 00a2 00C0      		rjmp .L29
+  87               	.L4:
+  88 00a4 0A30      		cpi r16,10
+  89 00a6 1105      		cpc r17,__zero_reg__
+  90 00a8 04F0      		brlt .+2
+  91 00aa 00C0      		rjmp .L29
+  92 00ac C901      		movw r24,r18
+  93 00ae 8B5F      		subi r24,lo8(-(-251))
+  94 00b0 9040      		sbci r25,hi8(-(-251))
+  95 00b2 845B      		subi r24,lo8(436)
+  96 00b4 9140      		sbci r25,hi8(436)
+  97 00b6 00F0      		brlo .+2
+  98 00b8 00C0      		rjmp .L10
+  99 00ba E901      		movw r28,r18
+ 100 00bc C25D      		subi r28,lo8(-(-466))
+ 101 00be D140      		sbci r29,hi8(-(-466))
+ 102 00c0 F801      		movw r30,r16
+ 103 00c2 EE0F      		lsl r30
+ 104 00c4 FF1F      		rol r31
+ 105 00c6 E050      		subi r30,lo8(-(PPM_in))
+ 106 00c8 F040      		sbci r31,hi8(-(PPM_in))
+ 107 00ca 8081      		ld r24,Z
+ 108 00cc 9181      		ldd r25,Z+1
+ 109 00ce 9E01      		movw r18,r28
+ 110 00d0 281B      		sub r18,r24
+ 111 00d2 390B      		sbc r19,r25
+ 112 00d4 C901      		movw r24,r18
+ 113 00d6 37FF      		sbrs r19,7
+ 114 00d8 00C0      		rjmp .L13
+ 115 00da 9095      		com r25
+ 116 00dc 8195      		neg r24
+ 117 00de 9F4F      		sbci r25,lo8(-1)
+ 118               	.L13:
+ 119 00e0 0697      		sbiw r24,6
+ 120 00e2 04F4      		brge .L12
+ 121 00e4 8091 0000 		lds r24,SenderOkay
+ 122 00e8 883C      		cpi r24,lo8(-56)
+ 123 00ea 00F4      		brsh .L12
+ 124 00ec 8091 0000 		lds r24,SenderOkay
+ 125 00f0 865F      		subi r24,lo8(-(10))
+ 126 00f2 8093 0000 		sts SenderOkay,r24
+ 127               	.L12:
+ 128 00f6 F801      		movw r30,r16
+ 129 00f8 EE0F      		lsl r30
+ 130 00fa FF1F      		rol r31
+ 131 00fc E050      		subi r30,lo8(-(PPM_in))
+ 132 00fe F040      		sbci r31,hi8(-(PPM_in))
+ 133 0100 2081      		ld r18,Z
+ 134 0102 3181      		ldd r19,Z+1
+ 135 0104 C901      		movw r24,r18
+ 136 0106 880F      		lsl r24
+ 137 0108 991F      		rol r25
+ 138 010a 820F      		add r24,r18
+ 139 010c 931F      		adc r25,r19
+ 140 010e 8C0F      		add r24,r28
+ 141 0110 9D1F      		adc r25,r29
+ 142 0112 64E0      		ldi r22,lo8(4)
+ 143 0114 70E0      		ldi r23,hi8(4)
+ 144 0116 0E94 0000 		call __divmodhi4
+ 145 011a 9B01      		movw r18,r22
+ 146 011c CE01      		movw r24,r28
+ 147 011e 0196      		adiw r24,1
+ 148 0120 8617      		cp r24,r22
+ 149 0122 9707      		cpc r25,r23
+ 150 0124 04F4      		brge .L16
+ 151 0126 2150      		subi r18,lo8(-(-1))
+ 152 0128 3040      		sbci r19,hi8(-(-1))
+ 153 012a 00C0      		rjmp .L18
+ 154               	.L16:
+ 155 012c 2197      		sbiw r28,1
+ 156 012e 6C17      		cp r22,r28
+ 157 0130 7D07      		cpc r23,r29
+ 158 0132 04F4      		brge .L18
+ 159 0134 2F5F      		subi r18,lo8(-(1))
+ 160 0136 3F4F      		sbci r19,hi8(-(1))
+ 161               	.L18:
+ 162 0138 8091 0000 		lds r24,SenderOkay
+ 163 013c E801      		movw r28,r16
+ 164 013e CC0F      		lsl r28
+ 165 0140 DD1F      		rol r29
+ 166 0142 833C      		cpi r24,lo8(-61)
+ 167 0144 00F0      		brlo .L20
+ 168 0146 FE01      		movw r30,r28
+ 169 0148 E050      		subi r30,lo8(-(PPM_in))
+ 170 014a F040      		sbci r31,hi8(-(PPM_in))
+ 171 014c 8081      		ld r24,Z
+ 172 014e 9181      		ldd r25,Z+1
+ 173 0150 A901      		movw r20,r18
+ 174 0152 481B      		sub r20,r24
+ 175 0154 590B      		sbc r21,r25
+ 176 0156 CA01      		movw r24,r20
+ 177 0158 63E0      		ldi r22,lo8(3)
+ 178 015a 70E0      		ldi r23,hi8(3)
+ 179 015c 0E94 0000 		call __divmodhi4
+ 180 0160 CB01      		movw r24,r22
+ 181 0162 880F      		lsl r24
+ 182 0164 991F      		rol r25
+ 183 0166 860F      		add r24,r22
+ 184 0168 971F      		adc r25,r23
+ 185 016a C050      		subi r28,lo8(-(PPM_diff))
+ 186 016c D040      		sbci r29,hi8(-(PPM_diff))
+ 187 016e 9983      		std Y+1,r25
+ 188 0170 8883      		st Y,r24
+ 189 0172 00C0      		rjmp .L22
+ 190               	.L20:
+ 191 0174 C050      		subi r28,lo8(-(PPM_diff))
+ 192 0176 D040      		sbci r29,hi8(-(PPM_diff))
+ 193 0178 1982      		std Y+1,__zero_reg__
+ 194 017a 1882      		st Y,__zero_reg__
+ 195               	.L22:
+ 196 017c F801      		movw r30,r16
+ 197 017e EE0F      		lsl r30
+ 198 0180 FF1F      		rol r31
+ 199 0182 E050      		subi r30,lo8(-(PPM_in))
+ 200 0184 F040      		sbci r31,hi8(-(PPM_in))
+ 201 0186 3183      		std Z+1,r19
+ 202 0188 2083      		st Z,r18
+ 203               	.L10:
+ 204 018a F801      		movw r30,r16
+ 205 018c 3196      		adiw r30,1
+ 206 018e F093 0000 		sts (index.2241)+1,r31
+ 207 0192 E093 0000 		sts index.2241,r30
+ 208 0196 E530      		cpi r30,5
+ 209 0198 F105      		cpc r31,__zero_reg__
+ 210 019a 01F4      		brne .L23
+ 211 019c 5D9A      		sbi 43-0x20,5
+ 212 019e 00C0      		rjmp .L25
+ 213               	.L23:
+ 214 01a0 5D98      		cbi 43-0x20,5
+ 215 01a2 E630      		cpi r30,6
+ 216 01a4 F105      		cpc r31,__zero_reg__
+ 217 01a6 01F4      		brne .L25
+ 218 01a8 5C9A      		sbi 43-0x20,4
+ 219 01aa 00C0      		rjmp .L27
+ 220               	.L25:
+ 221 01ac 5C98      		cbi 43-0x20,4
+ 222 01ae 3797      		sbiw r30,7
+ 223 01b0 01F4      		brne .L27
+ 224 01b2 5B9A      		sbi 43-0x20,3
+ 225 01b4 00C0      		rjmp .L29
+ 226               	.L27:
+ 227 01b6 5B98      		cbi 43-0x20,3
+ 228               	.L29:
+ 229               	/* epilogue: frame size=0 */
+ 230 01b8 FF91      		pop r31
+ 231 01ba EF91      		pop r30
+ 232 01bc DF91      		pop r29
+ 233 01be CF91      		pop r28
+ 234 01c0 BF91      		pop r27
+ 235 01c2 AF91      		pop r26
+ 236 01c4 9F91      		pop r25
+ 237 01c6 8F91      		pop r24
+ 238 01c8 7F91      		pop r23
+ 239 01ca 6F91      		pop r22
+ 240 01cc 5F91      		pop r21
+ 241 01ce 4F91      		pop r20
+ 242 01d0 3F91      		pop r19
+ 243 01d2 2F91      		pop r18
+ 244 01d4 1F91      		pop r17
+ 245 01d6 0F91      		pop r16
+ 246 01d8 0F90      		pop __tmp_reg__
+ 247 01da 0FBE      		out __SREG__,__tmp_reg__
+ 248 01dc 0F90      		pop __tmp_reg__
+ 249 01de 1F90      		pop __zero_reg__
+ 250 01e0 1895      		reti
+ 251               	/* epilogue end (size=21) */
+ 252               	/* function __vector_12 size 224 (182) */
+ 254               	.global	NewPpmData
+ 255               		.data
+ 258               	NewPpmData:
+ 259 0000 01        		.byte	1
+ 260               		.lcomm index.2241,2
+ 261               		.lcomm AltICR.2238,2
+ 262               		.comm PPM_in,22,1
+ 263               		.comm PPM_diff,22,1
+ 264               	/* File "rc.c": code  245 = 0x00f5 ( 202), prologues  21, epilogues  22 */
+DEFINED SYMBOLS
+                            *ABS*:00000000 rc.c
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccOUUn4q.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccOUUn4q.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccOUUn4q.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccOUUn4q.s:5      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccOUUn4q.s:6      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccOUUn4q.s:12     .text:00000000 rc_sum_init
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccOUUn4q.s:35     .text:0000002a __vector_12
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccOUUn4q.s:260    .bss:00000002 AltICR.2238
+                             .bss:00000000 index.2241
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccOUUn4q.s:258    .data:00000000 NewPpmData
+                            *COM*:00000016 PPM_in
+                            *COM*:00000016 PPM_diff
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+AdNeutralGier
+AdNeutralRoll
+AdNeutralNick
+SenderOkay
+__divmodhi4

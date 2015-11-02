@@ -1,0 +1,282 @@
+   1               		.file	"PPM_Decode.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+  16               	.Ltext0:
+  17               	.global	InitPPM
+  19               	InitPPM:
+  20               	.LFB9:
+  21               	.LM1:
+  22               	/* prologue: frame size=0 */
+  23               	/* prologue end (size=0) */
+  24               	.LM2:
+  25 0000 8EB5      		in r24,78-0x20
+  26 0002 806C      		ori r24,lo8(-64)
+  27 0004 8EBD      		out 78-0x20,r24
+  28               	.LM3:
+  29 0006 8EB5      		in r24,78-0x20
+  30 0008 8064      		ori r24,lo8(64)
+  31 000a 8EBD      		out 78-0x20,r24
+  32               	.LM4:
+  33 000c 89B7      		in r24,89-0x20
+  34 000e 8062      		ori r24,lo8(32)
+  35 0010 89BF      		out 89-0x20,r24
+  36               	.LM5:
+  37 0012 89B7      		in r24,89-0x20
+  38 0014 8460      		ori r24,lo8(4)
+  39 0016 89BF      		out 89-0x20,r24
+  40               	/* epilogue: frame size=0 */
+  41 0018 0895      		ret
+  42               	/* epilogue end (size=1) */
+  43               	/* function InitPPM size 13 (12) */
+  44               	.LFE9:
+  46               	.global	__vector_8
+  48               	__vector_8:
+  49               	.LFB10:
+  50               	.LM6:
+  51               	/* prologue: frame size=0 */
+  52 001a 1F92      		push __zero_reg__
+  53 001c 0F92      		push __tmp_reg__
+  54 001e 0FB6      		in __tmp_reg__,__SREG__
+  55 0020 0F92      		push __tmp_reg__
+  56 0022 1124      		clr __zero_reg__
+  57 0024 8F93      		push r24
+  58               	/* prologue end (size=6) */
+  59               	.LM7:
+  60 0026 8091 0000 		lds r24,Timer1Overflow
+  61 002a 8F5F      		subi r24,lo8(-(1))
+  62 002c 8093 0000 		sts Timer1Overflow,r24
+  63               	/* epilogue: frame size=0 */
+  64 0030 8F91      		pop r24
+  65 0032 0F90      		pop __tmp_reg__
+  66 0034 0FBE      		out __SREG__,__tmp_reg__
+  67 0036 0F90      		pop __tmp_reg__
+  68 0038 1F90      		pop __zero_reg__
+  69 003a 1895      		reti
+  70               	/* epilogue end (size=6) */
+  71               	/* function __vector_8 size 17 (5) */
+  72               	.LFE10:
+  74               	.global	__vector_5
+  76               	__vector_5:
+  77               	.LFB11:
+  78               	.LM8:
+  79               	/* prologue: frame size=0 */
+  80 003c 1F92      		push __zero_reg__
+  81 003e 0F92      		push __tmp_reg__
+  82 0040 0FB6      		in __tmp_reg__,__SREG__
+  83 0042 0F92      		push __tmp_reg__
+  84 0044 1124      		clr __zero_reg__
+  85 0046 2F93      		push r18
+  86 0048 3F93      		push r19
+  87 004a 4F93      		push r20
+  88 004c 5F93      		push r21
+  89 004e 8F93      		push r24
+  90 0050 9F93      		push r25
+  91               	/* prologue end (size=11) */
+  92               	.LM9:
+  93 0052 0EB4      		in __tmp_reg__,78-0x20
+  94 0054 06FE      		sbrs __tmp_reg__,6
+  95 0056 00C0      		rjmp .L6
+  96               	.LM10:
+  97 0058 1092 0000 		sts Timer1Overflow,__zero_reg__
+  98               	.LM11:
+  99 005c 86B5      		in r24,70-0x20
+ 100 005e 97B5      		in r25,(70)+1-0x20
+ 101 0060 9093 0000 		sts (tim_alt.2137)+1,r25
+ 102 0064 8093 0000 		sts tim_alt.2137,r24
+ 103               	.LM12:
+ 104 0068 8EB5      		in r24,78-0x20
+ 105 006a 8F7B      		andi r24,lo8(-65)
+ 106 006c 8EBD      		out 78-0x20,r24
+ 107               	.LM13:
+ 108 006e 84E6      		ldi r24,lo8(100)
+ 109 0070 8093 0000 		sts PPM_Timeout,r24
+ 110 0074 00C0      		rjmp .L17
+ 111               	.L6:
+ 112               	.LM14:
+ 113 0076 8EB5      		in r24,78-0x20
+ 114 0078 8064      		ori r24,lo8(64)
+ 115 007a 8EBD      		out 78-0x20,r24
+ 116               	.LM15:
+ 117 007c 86B5      		in r24,70-0x20
+ 118 007e 97B5      		in r25,(70)+1-0x20
+ 119 0080 2091 0000 		lds r18,Timer1Overflow
+ 120 0084 4091 0000 		lds r20,tim_alt.2137
+ 121 0088 5091 0000 		lds r21,(tim_alt.2137)+1
+ 122 008c 841B      		sub r24,r20
+ 123 008e 950B      		sbc r25,r21
+ 124 0090 30E0      		ldi r19,lo8(0)
+ 125 0092 322F      		mov r19,r18
+ 126 0094 2227      		clr r18
+ 127 0096 330F      		lsl r19
+ 128 0098 820F      		add r24,r18
+ 129 009a 931F      		adc r25,r19
+ 130 009c 6894      		set
+ 131 009e 14F8      		bld __zero_reg__,5-1
+ 132 00a0 9695      	1:	lsr r25
+ 133 00a2 8795      		ror r24
+ 134 00a4 1694      		lsr __zero_reg__
+ 135 00a6 01F4      		brne 1b
+ 136 00a8 9093 0000 		sts (ppm.2138)+1,r25
+ 137 00ac 8093 0000 		sts ppm.2138,r24
+ 138               	.LM16:
+ 139 00b0 8851      		subi r24,lo8(280)
+ 140 00b2 9140      		sbci r25,hi8(280)
+ 141 00b4 00F4      		brsh .L9
+ 142 00b6 88E1      		ldi r24,lo8(280)
+ 143 00b8 91E0      		ldi r25,hi8(280)
+ 144 00ba 9093 0000 		sts (ppm.2138)+1,r25
+ 145 00be 8093 0000 		sts ppm.2138,r24
+ 146               	.L9:
+ 147               	.LM17:
+ 148 00c2 4091 0000 		lds r20,ppm.2138
+ 149 00c6 5091 0000 		lds r21,(ppm.2138)+1
+ 150 00ca 4851      		subi r20,lo8(-(-280))
+ 151 00cc 5140      		sbci r21,hi8(-(-280))
+ 152               	.LM18:
+ 153 00ce 8091 0000 		lds r24,PPM_Signal
+ 154 00d2 9091 0000 		lds r25,(PPM_Signal)+1
+ 155 00d6 8417      		cp r24,r20
+ 156 00d8 9507      		cpc r25,r21
+ 157 00da 00F4      		brsh .L11
+ 158 00dc 8091 0000 		lds r24,PPM_Signal
+ 159 00e0 9091 0000 		lds r25,(PPM_Signal)+1
+ 160 00e4 0196      		adiw r24,1
+ 161 00e6 00C0      		rjmp .L18
+ 162               	.L11:
+ 163               	.LM19:
+ 164 00e8 8091 0000 		lds r24,PPM_Signal
+ 165 00ec 9091 0000 		lds r25,(PPM_Signal)+1
+ 166 00f0 4817      		cp r20,r24
+ 167 00f2 5907      		cpc r21,r25
+ 168 00f4 00F4      		brsh .L13
+ 169 00f6 8091 0000 		lds r24,PPM_Signal
+ 170 00fa 9091 0000 		lds r25,(PPM_Signal)+1
+ 171 00fe 0197      		sbiw r24,1
+ 172               	.L18:
+ 173 0100 9093 0000 		sts (PPM_Signal)+1,r25
+ 174 0104 8093 0000 		sts PPM_Signal,r24
+ 175               	.L13:
+ 176               	.LM20:
+ 177 0108 8091 0000 		lds r24,PPM_Signal
+ 178 010c 9091 0000 		lds r25,(PPM_Signal)+1
+ 179 0110 9C01      		movw r18,r24
+ 180 0112 220F      		lsl r18
+ 181 0114 331F      		rol r19
+ 182 0116 220F      		lsl r18
+ 183 0118 331F      		rol r19
+ 184 011a 220F      		lsl r18
+ 185 011c 331F      		rol r19
+ 186 011e 281B      		sub r18,r24
+ 187 0120 390B      		sbc r19,r25
+ 188 0122 240F      		add r18,r20
+ 189 0124 351F      		adc r19,r21
+ 190 0126 83E0      		ldi r24,3
+ 191 0128 3695      	1:	lsr r19
+ 192 012a 2795      		ror r18
+ 193 012c 8A95      		dec r24
+ 194 012e 01F4      		brne 1b
+ 195 0130 3093 0000 		sts (ppm.2138)+1,r19
+ 196 0134 2093 0000 		sts ppm.2138,r18
+ 197               	.LM21:
+ 198 0138 3093 0000 		sts (PPM_Signal)+1,r19
+ 199 013c 2093 0000 		sts PPM_Signal,r18
+ 200               	.LM22:
+ 201 0140 8091 0000 		lds r24,anz_ppm_werte
+ 202 0144 8F3F      		cpi r24,lo8(-1)
+ 203 0146 01F0      		breq .L15
+ 204 0148 8091 0000 		lds r24,anz_ppm_werte
+ 205 014c 8F5F      		subi r24,lo8(-(1))
+ 206 014e 8093 0000 		sts anz_ppm_werte,r24
+ 207               	.L15:
+ 208               	.LM23:
+ 209 0152 81E0      		ldi r24,lo8(1)
+ 210 0154 8093 0000 		sts ZeitZumAdWandeln,r24
+ 211               	.L17:
+ 212               	/* epilogue: frame size=0 */
+ 213 0158 9F91      		pop r25
+ 214 015a 8F91      		pop r24
+ 215 015c 5F91      		pop r21
+ 216 015e 4F91      		pop r20
+ 217 0160 3F91      		pop r19
+ 218 0162 2F91      		pop r18
+ 219 0164 0F90      		pop __tmp_reg__
+ 220 0166 0FBE      		out __SREG__,__tmp_reg__
+ 221 0168 0F90      		pop __tmp_reg__
+ 222 016a 1F90      		pop __zero_reg__
+ 223 016c 1895      		reti
+ 224               	/* epilogue end (size=11) */
+ 225               	/* function __vector_5 size 154 (132) */
+ 226               	.LFE11:
+ 228               	.global	__vector_1
+ 230               	__vector_1:
+ 231               	.LFB12:
+ 232               	.LM24:
+ 233               	/* prologue: frame size=0 */
+ 234 016e 1F92      		push __zero_reg__
+ 235 0170 0F92      		push __tmp_reg__
+ 236 0172 0FB6      		in __tmp_reg__,__SREG__
+ 237 0174 0F92      		push __tmp_reg__
+ 238 0176 1124      		clr __zero_reg__
+ 239 0178 8F93      		push r24
+ 240               	/* prologue end (size=6) */
+ 241               	.LM25:
+ 242 017a 8AB7      		in r24,90-0x20
+ 243 017c 8F7B      		andi r24,lo8(-65)
+ 244 017e 8ABF      		out 90-0x20,r24
+ 245               	/* epilogue: frame size=0 */
+ 246 0180 8F91      		pop r24
+ 247 0182 0F90      		pop __tmp_reg__
+ 248 0184 0FBE      		out __SREG__,__tmp_reg__
+ 249 0186 0F90      		pop __tmp_reg__
+ 250 0188 1F90      		pop __zero_reg__
+ 251 018a 1895      		reti
+ 252               	/* epilogue end (size=6) */
+ 253               	/* function __vector_1 size 15 (3) */
+ 254               	.LFE12:
+ 256               	.global	PPM_Signal
+ 257               	.global	PPM_Signal
+ 258               		.section .bss
+ 261               	PPM_Signal:
+ 262 0000 0000      		.skip 2,0
+ 263               	.global	Timer1Overflow
+ 264               	.global	Timer1Overflow
+ 267               	Timer1Overflow:
+ 268 0002 00        		.skip 1,0
+ 269               	.global	PPM_Timeout
+ 270               	.global	PPM_Timeout
+ 273               	PPM_Timeout:
+ 274 0003 00        		.skip 1,0
+ 275               	.global	anz_ppm_werte
+ 276               	.global	anz_ppm_werte
+ 279               	anz_ppm_werte:
+ 280 0004 00        		.skip 1,0
+ 281               		.lcomm ppm.2138,2
+ 282               		.lcomm tim_alt.2137,2
+ 331               	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 PPM_Decode.c
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:5      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:6      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:19     .text:00000000 InitPPM
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:48     .text:0000001a __vector_8
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:267    .bss:00000002 Timer1Overflow
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:76     .text:0000003c __vector_5
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:281    .bss:00000007 tim_alt.2137
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:273    .bss:00000003 PPM_Timeout
+                             .bss:00000005 ppm.2138
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:261    .bss:00000000 PPM_Signal
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:279    .bss:00000004 anz_ppm_werte
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccgIDIwG.s:230    .text:0000016e __vector_1
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+ZeitZumAdWandeln

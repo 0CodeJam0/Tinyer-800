@@ -1,0 +1,502 @@
+   1               		.file	"timer0.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               		.text
+  10               	.global	__vector_18
+  12               	__vector_18:
+  13               	/* prologue: frame size=0 */
+  14 0000 1F92      		push __zero_reg__
+  15 0002 0F92      		push __tmp_reg__
+  16 0004 0FB6      		in __tmp_reg__,__SREG__
+  17 0006 0F92      		push __tmp_reg__
+  18 0008 1124      		clr __zero_reg__
+  19 000a 2F93      		push r18
+  20 000c 3F93      		push r19
+  21 000e 5F93      		push r21
+  22 0010 6F93      		push r22
+  23 0012 7F93      		push r23
+  24 0014 8F93      		push r24
+  25 0016 9F93      		push r25
+  26 0018 AF93      		push r26
+  27 001a BF93      		push r27
+  28               	/* prologue end (size=14) */
+  29 001c 8091 0000 		lds r24,cnt.2245
+  30 0020 8150      		subi r24,lo8(-(-1))
+  31 0022 8093 0000 		sts cnt.2245,r24
+  32 0026 8F3F      		cpi r24,lo8(-1)
+  33 0028 01F4      		brne .L2
+  34 002a 89E0      		ldi r24,lo8(9)
+  35 002c 8093 0000 		sts cnt.2245,r24
+  36 0030 8091 0000 		lds r24,cnt_1ms.2244
+  37 0034 8F5F      		subi r24,lo8(-(1))
+  38 0036 8170      		andi r24,lo8(1)
+  39 0038 8093 0000 		sts cnt_1ms.2244,r24
+  40 003c 8823      		tst r24
+  41 003e 01F4      		brne .L4
+  42 0040 81E0      		ldi r24,lo8(1)
+  43 0042 8093 0000 		sts UpdateMotor,r24
+  44               	.L4:
+  45 0046 8091 0000 		lds r24,CountMilliseconds
+  46 004a 9091 0000 		lds r25,(CountMilliseconds)+1
+  47 004e 0196      		adiw r24,1
+  48 0050 9093 0000 		sts (CountMilliseconds)+1,r25
+  49 0054 8093 0000 		sts CountMilliseconds,r24
+  50               	.L2:
+  51 0058 8091 0000 		lds r24,beeptime
+  52 005c 9091 0000 		lds r25,(beeptime)+1
+  53 0060 0297      		sbiw r24,2
+  54 0062 00F0      		brlo .L6
+  55 0064 8091 0000 		lds r24,beeptime
+  56 0068 9091 0000 		lds r25,(beeptime)+1
+  57 006c 0197      		sbiw r24,1
+  58 006e 9093 0000 		sts (beeptime)+1,r25
+  59 0072 8093 0000 		sts beeptime,r24
+  60 0076 8091 0000 		lds r24,beeptime
+  61 007a 9091 0000 		lds r25,(beeptime)+1
+  62 007e 2091 0000 		lds r18,BeepMuster
+  63 0082 3091 0000 		lds r19,(BeepMuster)+1
+  64 0086 8223      		and r24,r18
+  65 0088 9323      		and r25,r19
+  66 008a 892B      		or r24,r25
+  67 008c 01F0      		breq .+2
+  68 008e 00C0      		rjmp .L8
+  69 0090 00C0      		rjmp .L9
+  70               	.L6:
+  71 0092 8FEF      		ldi r24,lo8(-1)
+  72 0094 9FEF      		ldi r25,hi8(-1)
+  73 0096 9093 0000 		sts (BeepMuster)+1,r25
+  74 009a 8093 0000 		sts BeepMuster,r24
+  75               	.L9:
+  76 009e 8091 0000 		lds r24,PlatinenVersion
+  77 00a2 8A30      		cpi r24,lo8(10)
+  78 00a4 01F4      		brne .L23
+  79 00a6 00C0      		rjmp .L10
+  80               	.L12:
+  81 00a8 5A9A      		sbi 43-0x20,2
+  82 00aa 00C0      		rjmp .L13
+  83               	.L24:
+  84 00ac 479A      		sbi 40-0x20,7
+  85 00ae 00C0      		rjmp .L13
+  86               	.L10:
+  87 00b0 5A98      		cbi 43-0x20,2
+  88 00b2 00C0      		rjmp .L13
+  89               	.L23:
+  90 00b4 4798      		cbi 40-0x20,7
+  91               	.L13:
+  92 00b6 8091 0000 		lds r24,EE_Parameter+8
+  93 00ba 83FF      		sbrs r24,3
+  94 00bc 00C0      		rjmp .L22
+  95 00be 349B      		sbis 38-0x20,4
+  96 00c0 00C0      		rjmp .L17
+  97 00c2 8091 0000 		lds r24,cntKompass
+  98 00c6 9091 0000 		lds r25,(cntKompass)+1
+  99 00ca 0196      		adiw r24,1
+ 100 00cc 9093 0000 		sts (cntKompass)+1,r25
+ 101 00d0 8093 0000 		sts cntKompass,r24
+ 102 00d4 00C0      		rjmp .L22
+ 103               	.L17:
+ 104 00d6 8091 0000 		lds r24,cntKompass
+ 105 00da 9091 0000 		lds r25,(cntKompass)+1
+ 106 00de 892B      		or r24,r25
+ 107 00e0 01F0      		breq .L19
+ 108 00e2 8091 0000 		lds r24,cntKompass
+ 109 00e6 9091 0000 		lds r25,(cntKompass)+1
+ 110 00ea 805A      		subi r24,lo8(4000)
+ 111 00ec 9F40      		sbci r25,hi8(4000)
+ 112 00ee 00F4      		brsh .L19
+ 113 00f0 8091 0000 		lds r24,cntKompass
+ 114 00f4 9091 0000 		lds r25,(cntKompass)+1
+ 115 00f8 9093 0000 		sts (KompassValue)+1,r25
+ 116 00fc 8093 0000 		sts KompassValue,r24
+ 117               	.L19:
+ 118 0100 8091 0000 		lds r24,KompassValue
+ 119 0104 9091 0000 		lds r25,(KompassValue)+1
+ 120 0108 2091 0000 		lds r18,KompassStartwert
+ 121 010c 3091 0000 		lds r19,(KompassStartwert)+1
+ 122 0110 845E      		subi r24,lo8(-(540))
+ 123 0112 9D4F      		sbci r25,hi8(-(540))
+ 124 0114 821B      		sub r24,r18
+ 125 0116 930B      		sbc r25,r19
+ 126 0118 68E6      		ldi r22,lo8(360)
+ 127 011a 71E0      		ldi r23,hi8(360)
+ 128 011c 0E94 0000 		call __divmodhi4
+ 129 0120 845B      		subi r24,lo8(-(-180))
+ 130 0122 9040      		sbci r25,hi8(-(-180))
+ 131 0124 9093 0000 		sts (KompassRichtung)+1,r25
+ 132 0128 8093 0000 		sts KompassRichtung,r24
+ 133 012c 1092 0000 		sts (cntKompass)+1,__zero_reg__
+ 134 0130 1092 0000 		sts cntKompass,__zero_reg__
+ 135 0134 00C0      		rjmp .L22
+ 136               	.L8:
+ 137 0136 8091 0000 		lds r24,PlatinenVersion
+ 138 013a 8A30      		cpi r24,lo8(10)
+ 139 013c 01F0      		breq .+2
+ 140 013e 00C0      		rjmp .L24
+ 141 0140 00C0      		rjmp .L12
+ 142               	.L22:
+ 143               	/* epilogue: frame size=0 */
+ 144 0142 BF91      		pop r27
+ 145 0144 AF91      		pop r26
+ 146 0146 9F91      		pop r25
+ 147 0148 8F91      		pop r24
+ 148 014a 7F91      		pop r23
+ 149 014c 6F91      		pop r22
+ 150 014e 5F91      		pop r21
+ 151 0150 3F91      		pop r19
+ 152 0152 2F91      		pop r18
+ 153 0154 0F90      		pop __tmp_reg__
+ 154 0156 0FBE      		out __SREG__,__tmp_reg__
+ 155 0158 0F90      		pop __tmp_reg__
+ 156 015a 1F90      		pop __zero_reg__
+ 157 015c 1895      		reti
+ 158               	/* epilogue end (size=14) */
+ 159               	/* function __vector_18 size 177 (149) */
+ 161               	.global	SetDelay
+ 163               	SetDelay:
+ 164               	/* prologue: frame size=0 */
+ 165               	/* prologue end (size=0) */
+ 166 015e 2091 0000 		lds r18,CountMilliseconds
+ 167 0162 3091 0000 		lds r19,(CountMilliseconds)+1
+ 168 0166 2F5F      		subi r18,lo8(-(1))
+ 169 0168 3F4F      		sbci r19,hi8(-(1))
+ 170 016a 820F      		add r24,r18
+ 171 016c 931F      		adc r25,r19
+ 172               	/* epilogue: frame size=0 */
+ 173 016e 0895      		ret
+ 174               	/* epilogue end (size=1) */
+ 175               	/* function SetDelay size 9 (8) */
+ 177               	.global	CheckDelay
+ 179               	CheckDelay:
+ 180               	/* prologue: frame size=0 */
+ 181               	/* prologue end (size=0) */
+ 182 0170 2091 0000 		lds r18,CountMilliseconds
+ 183 0174 3091 0000 		lds r19,(CountMilliseconds)+1
+ 184 0178 821B      		sub r24,r18
+ 185 017a 930B      		sbc r25,r19
+ 186 017c 892F      		mov r24,r25
+ 187 017e 9927      		clr r25
+ 188 0180 8695      		lsr r24
+ 189 0182 8074      		andi r24,lo8(64)
+ 190 0184 90E0      		ldi r25,lo8(0)
+ 191               	/* epilogue: frame size=0 */
+ 192 0186 0895      		ret
+ 193               	/* epilogue end (size=1) */
+ 194               	/* function CheckDelay size 12 (11) */
+ 196               	.global	__vector_9
+ 198               	__vector_9:
+ 199               	/* prologue: frame size=0 */
+ 200 0188 1F92      		push __zero_reg__
+ 201 018a 0F92      		push __tmp_reg__
+ 202 018c 0FB6      		in __tmp_reg__,__SREG__
+ 203 018e 0F92      		push __tmp_reg__
+ 204 0190 1124      		clr __zero_reg__
+ 205 0192 1F93      		push r17
+ 206 0194 2F93      		push r18
+ 207 0196 3F93      		push r19
+ 208 0198 4F93      		push r20
+ 209 019a 5F93      		push r21
+ 210 019c 6F93      		push r22
+ 211 019e 7F93      		push r23
+ 212 01a0 8F93      		push r24
+ 213 01a2 9F93      		push r25
+ 214 01a4 AF93      		push r26
+ 215 01a6 BF93      		push r27
+ 216 01a8 CF93      		push r28
+ 217 01aa DF93      		push r29
+ 218 01ac EF93      		push r30
+ 219 01ae FF93      		push r31
+ 220               	/* prologue end (size=20) */
+ 221 01b0 8091 0000 		lds r24,timer.2348
+ 222 01b4 8150      		subi r24,lo8(-(-1))
+ 223 01b6 8093 0000 		sts timer.2348,r24
+ 224 01ba 8F3F      		cpi r24,lo8(-1)
+ 225 01bc 01F0      		breq .+2
+ 226 01be 00C0      		rjmp .L30
+ 227 01c0 83E8      		ldi r24,lo8(-125)
+ 228 01c2 8093 B000 		sts 176,r24
+ 229 01c6 8091 0000 		lds r24,Parameter_ServoNickControl
+ 230 01ca C82F      		mov r28,r24
+ 231 01cc D0E0      		ldi r29,lo8(0)
+ 232 01ce D093 0000 		sts (ServoValue)+1,r29
+ 233 01d2 C093 0000 		sts ServoValue,r28
+ 234 01d6 8091 0000 		lds r24,EE_Parameter+53
+ 235 01da 1091 0000 		lds r17,EE_Parameter+34
+ 236 01de 80FF      		sbrs r24,0
+ 237 01e0 00C0      		rjmp .L32
+ 238 01e2 6091 0000 		lds r22,IntegralNick
+ 239 01e6 7091 0000 		lds r23,(IntegralNick)+1
+ 240 01ea 8091 0000 		lds r24,(IntegralNick)+2
+ 241 01ee 9091 0000 		lds r25,(IntegralNick)+3
+ 242 01f2 20E8      		ldi r18,lo8(128)
+ 243 01f4 30E0      		ldi r19,hi8(128)
+ 244 01f6 40E0      		ldi r20,hlo8(128)
+ 245 01f8 50E0      		ldi r21,hhi8(128)
+ 246 01fa 0E94 0000 		call __divmodsi4
+ 247 01fe CA01      		movw r24,r20
+ 248 0200 B901      		movw r22,r18
+ 249 0202 212F      		mov r18,r17
+ 250 0204 30E0      		ldi r19,lo8(0)
+ 251 0206 40E0      		ldi r20,lo8(0)
+ 252 0208 50E0      		ldi r21,hi8(0)
+ 253 020a 0E94 0000 		call __mulsi3
+ 254 020e 20E0      		ldi r18,lo8(512)
+ 255 0210 32E0      		ldi r19,hi8(512)
+ 256 0212 40E0      		ldi r20,hlo8(512)
+ 257 0214 50E0      		ldi r21,hhi8(512)
+ 258 0216 0E94 0000 		call __divmodsi4
+ 259 021a C20F      		add r28,r18
+ 260 021c D31F      		adc r29,r19
+ 261 021e 00C0      		rjmp .L41
+ 262               	.L32:
+ 263 0220 6091 0000 		lds r22,IntegralNick
+ 264 0224 7091 0000 		lds r23,(IntegralNick)+1
+ 265 0228 8091 0000 		lds r24,(IntegralNick)+2
+ 266 022c 9091 0000 		lds r25,(IntegralNick)+3
+ 267 0230 20E8      		ldi r18,lo8(128)
+ 268 0232 30E0      		ldi r19,hi8(128)
+ 269 0234 40E0      		ldi r20,hlo8(128)
+ 270 0236 50E0      		ldi r21,hhi8(128)
+ 271 0238 0E94 0000 		call __divmodsi4
+ 272 023c CA01      		movw r24,r20
+ 273 023e B901      		movw r22,r18
+ 274 0240 212F      		mov r18,r17
+ 275 0242 30E0      		ldi r19,lo8(0)
+ 276 0244 40E0      		ldi r20,lo8(0)
+ 277 0246 50E0      		ldi r21,hi8(0)
+ 278 0248 0E94 0000 		call __mulsi3
+ 279 024c 20E0      		ldi r18,lo8(512)
+ 280 024e 32E0      		ldi r19,hi8(512)
+ 281 0250 40E0      		ldi r20,hlo8(512)
+ 282 0252 50E0      		ldi r21,hhi8(512)
+ 283 0254 0E94 0000 		call __divmodsi4
+ 284 0258 C21B      		sub r28,r18
+ 285 025a D30B      		sbc r29,r19
+ 286               	.L41:
+ 287 025c D093 0000 		sts (ServoValue)+1,r29
+ 288 0260 C093 0000 		sts ServoValue,r28
+ 289 0264 2091 0000 		lds r18,ServoValue
+ 290 0268 3091 0000 		lds r19,(ServoValue)+1
+ 291 026c 8091 0000 		lds r24,EE_Parameter+35
+ 292 0270 90E0      		ldi r25,lo8(0)
+ 293 0272 2817      		cp r18,r24
+ 294 0274 3907      		cpc r19,r25
+ 295 0276 04F0      		brlt .L42
+ 296 0278 8091 0000 		lds r24,EE_Parameter+36
+ 297 027c 90E0      		ldi r25,lo8(0)
+ 298 027e 8217      		cp r24,r18
+ 299 0280 9307      		cpc r25,r19
+ 300 0282 04F4      		brge .L37
+ 301               	.L42:
+ 302 0284 9093 0000 		sts (ServoValue)+1,r25
+ 303 0288 8093 0000 		sts ServoValue,r24
+ 304               	.L37:
+ 305 028c 8091 0000 		lds r24,ServoValue
+ 306 0290 8093 B300 		sts 179,r24
+ 307 0294 8091 0000 		lds r24,EE_Parameter+37
+ 308 0298 8093 0000 		sts timer.2348,r24
+ 309 029c 00C0      		rjmp .L40
+ 310               	.L30:
+ 311 029e 83E0      		ldi r24,lo8(3)
+ 312 02a0 8093 B000 		sts 176,r24
+ 313 02a4 5F98      		cbi 43-0x20,7
+ 314               	.L40:
+ 315               	/* epilogue: frame size=0 */
+ 316 02a6 FF91      		pop r31
+ 317 02a8 EF91      		pop r30
+ 318 02aa DF91      		pop r29
+ 319 02ac CF91      		pop r28
+ 320 02ae BF91      		pop r27
+ 321 02b0 AF91      		pop r26
+ 322 02b2 9F91      		pop r25
+ 323 02b4 8F91      		pop r24
+ 324 02b6 7F91      		pop r23
+ 325 02b8 6F91      		pop r22
+ 326 02ba 5F91      		pop r21
+ 327 02bc 4F91      		pop r20
+ 328 02be 3F91      		pop r19
+ 329 02c0 2F91      		pop r18
+ 330 02c2 1F91      		pop r17
+ 331 02c4 0F90      		pop __tmp_reg__
+ 332 02c6 0FBE      		out __SREG__,__tmp_reg__
+ 333 02c8 0F90      		pop __tmp_reg__
+ 334 02ca 1F90      		pop __zero_reg__
+ 335 02cc 1895      		reti
+ 336               	/* epilogue end (size=20) */
+ 337               	/* function __vector_9 size 163 (123) */
+ 339               	.global	Timer_Init
+ 341               	Timer_Init:
+ 342               	/* prologue: frame size=0 */
+ 343               	/* prologue end (size=0) */
+ 344 02ce 8091 0000 		lds r24,CountMilliseconds
+ 345 02d2 9091 0000 		lds r25,(CountMilliseconds)+1
+ 346 02d6 0B96      		adiw r24,11
+ 347 02d8 9093 0000 		sts (tim_main)+1,r25
+ 348 02dc 8093 0000 		sts tim_main,r24
+ 349 02e0 82E0      		ldi r24,lo8(2)
+ 350 02e2 85BD      		out 69-0x20,r24
+ 351 02e4 83EA      		ldi r24,lo8(-93)
+ 352 02e6 84BD      		out 68-0x20,r24
+ 353 02e8 17BC      		out 71-0x20,__zero_reg__
+ 354 02ea 88E7      		ldi r24,lo8(120)
+ 355 02ec 88BD      		out 72-0x20,r24
+ 356 02ee 96E0      		ldi r25,lo8(6)
+ 357 02f0 96BD      		out 70-0x20,r25
+ 358 02f2 83EC      		ldi r24,lo8(-61)
+ 359 02f4 8093 B000 		sts 176,r24
+ 360 02f8 9093 B100 		sts 177,r25
+ 361 02fc E0E7      		ldi r30,lo8(112)
+ 362 02fe F0E0      		ldi r31,hi8(112)
+ 363 0300 8081      		ld r24,Z
+ 364 0302 8260      		ori r24,lo8(2)
+ 365 0304 8083      		st Z,r24
+ 366 0306 EEE6      		ldi r30,lo8(110)
+ 367 0308 F0E0      		ldi r31,hi8(110)
+ 368 030a 8081      		ld r24,Z
+ 369 030c 8160      		ori r24,lo8(1)
+ 370 030e 8083      		st Z,r24
+ 371 0310 8AE0      		ldi r24,lo8(10)
+ 372 0312 8093 B300 		sts 179,r24
+ 373 0316 1092 B200 		sts 178,__zero_reg__
+ 374               	/* epilogue: frame size=0 */
+ 375 031a 0895      		ret
+ 376               	/* epilogue end (size=1) */
+ 377               	/* function Timer_Init size 39 (38) */
+ 379               	.global	Delay_ms_Mess
+ 381               	Delay_ms_Mess:
+ 382               	/* prologue: frame size=0 */
+ 383               	/* prologue end (size=0) */
+ 384 031c AC01      		movw r20,r24
+ 385 031e 2091 0000 		lds r18,CountMilliseconds
+ 386 0322 3091 0000 		lds r19,(CountMilliseconds)+1
+ 387 0326 2F5F      		subi r18,lo8(-(1))
+ 388 0328 3F4F      		sbci r19,hi8(-(1))
+ 389 032a 00C0      		rjmp .L46
+ 390               	.L47:
+ 391 032c 8FEE      		ldi r24,lo8(-17)
+ 392 032e 8093 7A00 		sts 122,r24
+ 393               	.L46:
+ 394 0332 8091 0000 		lds r24,CountMilliseconds
+ 395 0336 9091 0000 		lds r25,(CountMilliseconds)+1
+ 396 033a B901      		movw r22,r18
+ 397 033c 681B      		sub r22,r24
+ 398 033e 790B      		sbc r23,r25
+ 399 0340 CB01      		movw r24,r22
+ 400 0342 840F      		add r24,r20
+ 401 0344 951F      		adc r25,r21
+ 402 0346 8070      		andi r24,lo8(-32768)
+ 403 0348 9078      		andi r25,hi8(-32768)
+ 404 034a 892F      		mov r24,r25
+ 405 034c 9927      		clr r25
+ 406 034e 8695      		lsr r24
+ 407 0350 8823      		tst r24
+ 408 0352 01F0      		breq .L47
+ 409               	/* epilogue: frame size=0 */
+ 410 0354 0895      		ret
+ 411               	/* epilogue end (size=1) */
+ 412               	/* function Delay_ms_Mess size 29 (28) */
+ 414               	.global	Delay_ms
+ 416               	Delay_ms:
+ 417               	/* prologue: frame size=0 */
+ 418               	/* prologue end (size=0) */
+ 419 0356 AC01      		movw r20,r24
+ 420 0358 2091 0000 		lds r18,CountMilliseconds
+ 421 035c 3091 0000 		lds r19,(CountMilliseconds)+1
+ 422 0360 2F5F      		subi r18,lo8(-(1))
+ 423 0362 3F4F      		sbci r19,hi8(-(1))
+ 424               	.L51:
+ 425 0364 8091 0000 		lds r24,CountMilliseconds
+ 426 0368 9091 0000 		lds r25,(CountMilliseconds)+1
+ 427 036c B901      		movw r22,r18
+ 428 036e 681B      		sub r22,r24
+ 429 0370 790B      		sbc r23,r25
+ 430 0372 CB01      		movw r24,r22
+ 431 0374 840F      		add r24,r20
+ 432 0376 951F      		adc r25,r21
+ 433 0378 8070      		andi r24,lo8(-32768)
+ 434 037a 9078      		andi r25,hi8(-32768)
+ 435 037c 892F      		mov r24,r25
+ 436 037e 9927      		clr r25
+ 437 0380 8695      		lsr r24
+ 438 0382 8823      		tst r24
+ 439 0384 01F0      		breq .L51
+ 440               	/* epilogue: frame size=0 */
+ 441 0386 0895      		ret
+ 442               	/* epilogue end (size=1) */
+ 443               	/* function Delay_ms size 25 (24) */
+ 445               	.global	CountMilliseconds
+ 446               	.global	CountMilliseconds
+ 447               		.section .bss
+ 450               	CountMilliseconds:
+ 451 0000 0000      		.skip 2,0
+ 452               	.global	UpdateMotor
+ 453               	.global	UpdateMotor
+ 456               	UpdateMotor:
+ 457 0002 00        		.skip 1,0
+ 458               	.global	cntKompass
+ 459               	.global	cntKompass
+ 462               	cntKompass:
+ 463 0003 0000      		.skip 2,0
+ 464               	.global	beeptime
+ 465               	.global	beeptime
+ 468               	beeptime:
+ 469 0005 0000      		.skip 2,0
+ 470               	.global	BeepMuster
+ 471               		.data
+ 474               	BeepMuster:
+ 475 0000 FFFF      		.word	-1
+ 476               	.global	ServoValue
+ 477               	.global	ServoValue
+ 478               		.section .bss
+ 481               	ServoValue:
+ 482 0007 0000      		.skip 2,0
+ 483               		.data
+ 486               	timer.2348:
+ 487 0002 0A        		.byte	10
+ 488               		.lcomm cnt.2245,1
+ 491               	cnt_1ms.2244:
+ 492 0003 01        		.byte	1
+ 493               		.lcomm tim_main,2
+ 494               	/* File "timer0.c": code  454 = 0x01c6 ( 381), prologues  34, epilogues  39 */
+DEFINED SYMBOLS
+                            *ABS*:00000000 timer0.c
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:5      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:6      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:12     .text:00000000 __vector_18
+                             .bss:00000009 cnt.2245
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:491    .data:00000003 cnt_1ms.2244
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:456    .bss:00000002 UpdateMotor
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:450    .bss:00000000 CountMilliseconds
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:468    .bss:00000005 beeptime
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:474    .data:00000000 BeepMuster
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:462    .bss:00000003 cntKompass
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:163    .text:0000015e SetDelay
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:179    .text:00000170 CheckDelay
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:198    .text:00000188 __vector_9
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:486    .data:00000002 timer.2348
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:481    .bss:00000007 ServoValue
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:341    .text:000002ce Timer_Init
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:488    .bss:0000000a tim_main
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:381    .text:0000031c Delay_ms_Mess
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccLrFbKp.s:416    .text:00000356 Delay_ms
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
+PlatinenVersion
+EE_Parameter
+KompassValue
+KompassStartwert
+__divmodhi4
+KompassRichtung
+Parameter_ServoNickControl
+IntegralNick
+__divmodsi4
+__mulsi3

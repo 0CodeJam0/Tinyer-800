@@ -1,0 +1,37 @@
+   1               		.file	"spi.c"
+   2               	__SREG__ = 0x3f
+   3               	__SP_H__ = 0x3e
+   4               	__SP_L__ = 0x3d
+   5               	__tmp_reg__ = 0
+   6               	__zero_reg__ = 1
+   7               		.global __do_copy_data
+   8               		.global __do_clear_bss
+   9               	.global	Ptr_buffer
+  10               		.data
+  13               	Ptr_buffer:
+  14 0000 0000      		.word	ToNaviCtrl
+  15               		.comm ToNaviCtrl,11,1
+  16               		.comm FromNaviCtrl,9,1
+  17               		.comm SPI_BufferIndex,1,1
+  18               		.comm SPI_Buffer,9,1
+  19               		.comm SPITransferCompleted,1,1
+  20               		.comm SPI_ChkSum,1,1
+  21               	/* File "spi.c": code    0 = 0x0000 (   0), prologues   0, epilogues   0 */
+DEFINED SYMBOLS
+                            *ABS*:00000000 spi.c
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccqtcX5g.s:2      *ABS*:0000003f __SREG__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccqtcX5g.s:3      *ABS*:0000003e __SP_H__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccqtcX5g.s:4      *ABS*:0000003d __SP_L__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccqtcX5g.s:5      *ABS*:00000000 __tmp_reg__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccqtcX5g.s:6      *ABS*:00000001 __zero_reg__
+C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp/ccqtcX5g.s:13     .data:00000000 Ptr_buffer
+                            *COM*:0000000b ToNaviCtrl
+                            *COM*:00000009 FromNaviCtrl
+                            *COM*:00000001 SPI_BufferIndex
+                            *COM*:00000009 SPI_Buffer
+                            *COM*:00000001 SPITransferCompleted
+                            *COM*:00000001 SPI_ChkSum
+
+UNDEFINED SYMBOLS
+__do_copy_data
+__do_clear_bss
